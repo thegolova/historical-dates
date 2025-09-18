@@ -1,17 +1,35 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MobileLayout from "./components/mobile-layout/MobileLayout";
 import DesktopLayout from "./components/desktop-layout/DesktopLayout";
 
 const HistoricalDates = () => {
-  const historicalDates = {};
+  const [loading, setLoading] = useState(false);
+  const [dates, setDates] = useState([]);
   const isMobile = false;
-  return <div className="historical-dates-container">
-    {
-      isMobile ? (<MobileLayout />) : ( <DesktopLayout />)
+  console.log("dates", dates);
+
+  useEffect(() => {
+    async function loadData() {
+      setLoading(true);
+      const response = await fetch("/api/historical-dates", {
+        headers: { "Content-Type": "application/json" },
+      });
+      const responseJson = await response.json();
+      setDates(responseJson);
+      console.log("responseJson", responseJson);
+      setLoading(false);
     }
-  </div>;
+    loadData();
+  }, []);
+
+  return (
+    <div className="historical-dates-container">
+      {loading && <div> Loading...</div>}
+      {isMobile ? <MobileLayout /> : <DesktopLayout />}
+    </div>
+  );
 };
 
 export default HistoricalDates;
