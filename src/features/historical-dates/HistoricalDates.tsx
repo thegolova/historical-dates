@@ -5,10 +5,11 @@ import MobileLayout from "./components/mobile-layout/MobileLayout";
 import DesktopLayout from "./components/desktop-layout/DesktopLayout";
 
 const HistoricalDates = () => {
-  const [loading, setLoading] = useState(false);
-  const [dates, setDates] = useState([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [categories, setCategories] = useState([]);
   const isMobile = false;
-  console.log("dates", dates);
+
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(1);
 
   useEffect(() => {
     async function loadData() {
@@ -17,17 +18,27 @@ const HistoricalDates = () => {
         headers: { "Content-Type": "application/json" },
       });
       const responseJson = await response.json();
-      setDates(responseJson);
-      console.log("responseJson", responseJson);
+      setCategories(responseJson.data);
       setLoading(false);
     }
     loadData();
   }, []);
 
+
+  const layoutProps = {
+    categories: categories,
+    selectedCategory,
+    setSelectedCategory,
+  };
+
   return (
     <div className="historical-dates-container">
       {loading && <div> Loading...</div>}
-      {isMobile ? <MobileLayout /> : <DesktopLayout />}
+      {isMobile ? (
+        <MobileLayout {...layoutProps} />
+      ) : (
+        <DesktopLayout {...layoutProps} />
+      )}
     </div>
   );
 };
