@@ -43,12 +43,12 @@ const DateDisplay = ({
         },
       }
     );
-  }, [first, last]);
+  }, [first, last, firstYear, lastYear]);
 
   return (
     <div className="date-display">
-      <span className="first">{firstYear}</span>
-      <span className="last">{lastYear}</span>
+      <span className="first">{!!firstYear  && firstYear}</span>
+      <span className="last">{!!lastYear && lastYear}</span>
     </div>
   );
 };

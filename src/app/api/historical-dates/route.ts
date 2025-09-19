@@ -6,6 +6,7 @@ export async function GET() {
     await new Promise((res) => setTimeout(res, 500));
     return NextResponse.json(historicalDates);
   } catch (e) {
+    console.error('error' , e)
     return NextResponse.json(
       {
         error: "Failed to fetch data",

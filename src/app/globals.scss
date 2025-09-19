@@ -24,7 +24,9 @@ body {
   justify-content: center;
 
   .desktop-container {
+    position: relative;
     width: 1440px;
+    padding-top: 170px;
   }
 
   .desktop-title {
@@ -80,7 +82,7 @@ body {
     }
 
     .slide-year {
-      color: #2f80ed;
+      color: #3877EE;
       font-size: 25px;
       margin-bottom: 20px;
       font-family: "Bebas Neue", sans-serif;
@@ -88,6 +90,7 @@ body {
     }
 
     .slide-desc {
+      color: #42567a;
       font-size: 20px;
       font-family: "PT Sans", sans-serif;
       font-style: normal;
@@ -135,6 +138,10 @@ body {
     font-style: normal;
     font-weight: bold;
     gap: 60px;
+    display: flex;
+    justify-content: center;
+    padding: 96px 0 137px 0;
+    line-height: 160px;
 
     .first {
       color: #5d5fef;
@@ -146,5 +153,14 @@ body {
       -webkit-text-stroke-width: 1px;
       -webkit-text-stroke-color: black;
     }
+  }
+
+  .circle-picker-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    top: 225;
   }
 }

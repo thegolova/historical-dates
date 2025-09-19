@@ -1,9 +1,7 @@
-// components/PickerWheel.tsx
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { CategoriesType } from "../../types";
-
 
 const CirclePicker = ({
   categories,
@@ -14,9 +12,9 @@ const CirclePicker = ({
   selectedCategory: number;
   setSelectedCategory: (index: number) => void;
 }) => {
-  const size = 340;
+  const size = 530;
   const center = size / 2;
-  const radius = 130;
+  const radius = 260;
   const anglePerItem = 360 / categories.length;
 
   // позиция выбранного типа даты
@@ -51,88 +49,98 @@ const CirclePicker = ({
         { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }
       );
     }
-  }, [selectedCategory, anglePerItem]);
+  }, [selectedCategory, anglePerItem, desiredAngleDeg]);
 
   return (
-    <div
-      className="picker-wheel"
-      style={{
-        width: size,
-        height: size,
-        position: "relative",
-        overflow: "visible",
-      }}
-    >
-      <svg
-        width={size}
-        height={size}
-        viewBox={`0 0 ${size} ${size}`}
-        style={{ overflow: "visible", display: "block" }}
+    <div className="circle-picker-container">
+      <div
+        className="circle-picker"
+        style={{
+          width: size,
+          height: size,
+          position: "relative",
+          overflow: "visible",
+        }}
       >
-        <circle
-          cx={center}
-          cy={center}
-          r={radius}
-          stroke="#e6e9ee"
-          strokeWidth={2}
-          fill="none"
-        />
+        <svg
+          width={size}
+          height={size}
+          viewBox={`0 0 ${size} ${size}`}
+          style={{ overflow: "visible", display: "block" }}
+        >
+          <circle
+            cx={center}
+            cy={center}
+            r={radius}
+            stroke="#42567a"
+            opacity={0.2}
+            strokeWidth={2}
+            fill="none"
+          />
 
-        {categories.map((cat, i) => {
-          const index = i + 1;
-          const baseDeg = (360 / categories.length) * index;
-          const angleDeg = baseDeg + rotation;
-          const angleRad = (angleDeg * Math.PI) / 180;
+          {categories.map((cat, i) => {
+            const index = i + 1;
+            const baseDeg = (360 / categories.length) * index;
+            const angleDeg = baseDeg + rotation;
+            const angleRad = (angleDeg * Math.PI) / 180;
 
-          const x = center + radius * Math.cos(angleRad);
-          const y = center + radius * Math.sin(angleRad);
+            const x = center + radius * Math.cos(angleRad);
+            const y = center + radius * Math.sin(angleRad);
 
-          const xStr = Number(x.toFixed(3));
-          const yStr = Number(y.toFixed(3));
+            const xStr = Number(x.toFixed(3));
+            const yStr = Number(y.toFixed(3));
 
-          const isSelected = index === selectedCategory;
+            const isSelected = index === selectedCategory;
 
-          return (
-            <g
-              key={cat.id}
-              transform={`translate(${xStr},${yStr})`}
-              onClick={() => setSelectedCategory(index)}
-              style={{ cursor: "pointer" }}
-            >
-              {isSelected ? (
-                <>
-                  <circle r={18} stroke="#2f3b5a" strokeWidth={2} fill="#fff" />
-                  <text
-                    textAnchor="middle"
-                    dy="6"
-                    fontSize={14}
-                    fontWeight={700}
-                    fill="#2f3b5a"
-                  >
-                    {index}
-                  </text>
+            return (
+              <g
+                key={cat.id}
+                transform={`translate(${xStr},${yStr})`}
+                onClick={() => setSelectedCategory(index)}
+                style={{ cursor: "pointer" }}
+              >
+                {isSelected ? (
+                  <>
+                    <circle
+                      r={18}
+                      stroke="rgb(48, 62, 88, 0.5)"
+                      strokeWidth={2}
+                      fill="#fff"
+                    />
+                    <text
+                      textAnchor="middle"
+                      dy="6"
+                      fontSize={20}
+                      fontStyle="regular"
+                      fill="#42567a"
+                    >
+                      {index}
+                    </text>
 
-                  <text
-                    ref={labelRef}
-                    x={28}
-                    dy="6"
-                    fontSize={13}
-                    fontWeight={600}
-                    fill="#2f3b5a"
-                    style={{ whiteSpace: "nowrap", pointerEvents: "none" }}
-                  >
-                    {cat.type}
-                  </text>
-                </>
-              ) : (
-                <circle r={5} fill="#2f3b5a" opacity={0.75} />
-              )}
-            </g>
-          );
-        })}
-      </svg>
+                    <text
+                      ref={labelRef}
+                      x={28}
+                      dy="6"
+                      fontFamily="PT Sans"
+                      fontSize={20}
+                      line-height={30}
+                      fontWeight="bold"
+                      fill="#42567a"
+                      style={{ whiteSpace: "nowrap", pointerEvents: "none" }}
+                    >
+                      {cat.type}
+                    </text>
+                  </>
+                ) : (
+                  <circle r={5} fill="#42567a" />
+                )}
+              </g>
+            );
+          })}
+        </svg>
+      </div>
     </div>
   );
-}
+};
 
 export default CirclePicker;

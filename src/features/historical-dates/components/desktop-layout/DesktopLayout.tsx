@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import EventsSlider from "../events-slider/EventsSlider";
 import Stepper from "../stepper/Stepper";
 import CirclePicker from "../circle-picker/CirclePicker";
@@ -13,7 +13,7 @@ const DesktopLayout = ({
   setSelectedCategory,
 }: {
   categories: CategoriesType[];
-  selectedCategory: number;
+  selectedCategory: number | null;
   setSelectedCategory: (number: number) => void;
 }) => {
   const totalCategory = categories.length;
@@ -22,25 +22,17 @@ const DesktopLayout = ({
     (item: CategoriesType) => item.id === selectedCategory
   ) || { id: -1, type: "Unknown category", events: [] };
 
-  console.log({
-    categories,
-    selectedCategory,
-    currentCategory,
-    totalCategory,
-    events: currentCategory.events,
-  });
-
   return (
     <div className="desktop-container">
       <h1 className="desktop-title">Исторические даты</h1>
       <DateDisplay currentCategory={currentCategory}/>
-      <CirclePicker
+      {<CirclePicker
         categories={categories}
-        selectedCategory={selectedCategory}
+        selectedCategory={selectedCategory as number}
         setSelectedCategory={setSelectedCategory}
-      />
+      />}
       <Stepper
-        selectedCategory={selectedCategory}
+        selectedCategory={selectedCategory as number}
         setSelectedCategory={setSelectedCategory}
         totalCategory={totalCategory}
       />

@@ -10,7 +10,7 @@ const HistoricalDates = () => {
   const [categories, setCategories] = useState<CategoriesType[]>([]);
   const isMobile = false;
 
-  const [selectedCategory, setSelectedCategory] = useState<number | null>(1);
+  const [selectedCategory, setSelectedCategory] = useState<number>(1);
 
   useEffect(() => {
     async function loadData() {
@@ -37,7 +37,7 @@ const HistoricalDates = () => {
         <div> Loading...</div>
       </div>
     );
-
+  
   return (
     <div className="historical-dates-container">
       {isMobile ? (
