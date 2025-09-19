@@ -3,10 +3,11 @@
 import React, { useEffect, useState } from "react";
 import MobileLayout from "./components/mobile-layout/MobileLayout";
 import DesktopLayout from "./components/desktop-layout/DesktopLayout";
+import { CategoriesType } from "./types";
 
 const HistoricalDates = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<CategoriesType[]>([]);
   const isMobile = false;
 
   const [selectedCategory, setSelectedCategory] = useState<number | null>(1);
@@ -23,7 +24,6 @@ const HistoricalDates = () => {
     }
     loadData();
   }, []);
-
 
   const layoutProps = {
     categories: categories,
