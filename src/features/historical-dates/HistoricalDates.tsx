@@ -8,7 +8,7 @@ import { CategoriesType } from "./types";
 const HistoricalDates = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [categories, setCategories] = useState<CategoriesType[]>([]);
-  const isMobile = true;
+  const isMobile = false;
 
   const [selectedCategory, setSelectedCategory] = useState<number>(1);
 
