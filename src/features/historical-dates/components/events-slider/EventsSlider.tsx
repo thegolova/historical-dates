@@ -13,15 +13,19 @@ const EventsSlider = ({
   isMobile: boolean;
 }) => {
   return (
-    <div className={isMobile ? "events-slider-mobile" : "events-slider desktop-content"}>
+    <div
+      className={
+        isMobile ? "events-slider-mobile" : "events-slider desktop-content"
+      }
+    >
       <Swiper
         modules={[Navigation]}
         slidesPerView={isMobile ? "auto" : 3}
         spaceBetween={24}
-        navigation
         centeredSlides={false}
         grabCursor
         className="events-swiper"
+        {...(!isMobile && { navigation: true })}
       >
         {events.map((event) => {
           const year = new Date(event.date).getFullYear();
