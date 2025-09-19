@@ -25,18 +25,19 @@ const DesktopLayout = ({
   return (
     <div className="desktop-container">
       <h1 className="desktop-title">Исторические даты</h1>
-      <DateDisplay currentCategory={currentCategory}/>
-      {<CirclePicker
+      <DateDisplay currentCategory={currentCategory} isMobile={false} />
+      <CirclePicker
         categories={categories}
         selectedCategory={selectedCategory as number}
         setSelectedCategory={setSelectedCategory}
-      />}
+      />
       <Stepper
         selectedCategory={selectedCategory as number}
         setSelectedCategory={setSelectedCategory}
         totalCategory={totalCategory}
+        isMobile={false}
       />
-      <EventsSlider events={currentCategory.events} />
+      <EventsSlider events={currentCategory.events} isMobile={false} />
     </div>
   );
 };

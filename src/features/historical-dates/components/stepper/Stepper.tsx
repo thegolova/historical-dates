@@ -4,10 +4,12 @@ const Stepper = ({
   selectedCategory,
   setSelectedCategory,
   totalCategory,
+  isMobile,
 }: {
   selectedCategory: number;
   setSelectedCategory: (number: number) => void;
   totalCategory: number;
+  isMobile: boolean;
 }) => {
   const subStep = () => {
     setSelectedCategory(selectedCategory - 1);
@@ -29,17 +31,19 @@ const Stepper = ({
   const isDisabledAdd = selectedCategory === totalCategory;
 
   return (
-    <div className="stepper desktop-content">
+    <div className={isMobile ? "stepper-mobile" : "stepper desktop-content"}>
       <div className="stepper-container">
-        <div className="stepper-title">
-          {formattedSelectedCategory} / {formattedTotalCategory}
+        <div className="title">
+          {formattedSelectedCategory}/{formattedTotalCategory}
         </div>
-        <button onClick={subStep} disabled={isDisabledSub}>
-          &#60;
-        </button>
-        <button onClick={addStep} disabled={isDisabledAdd}>
-          &gt;
-        </button>
+        <div className="buttons">
+          <button onClick={subStep} disabled={isDisabledSub}>
+            &#60;
+          </button>
+          <button onClick={addStep} disabled={isDisabledAdd}>
+            &gt;
+          </button>
+        </div>
       </div>
     </div>
   );

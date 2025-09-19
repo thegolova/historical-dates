@@ -5,12 +5,18 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { EventsType } from "../../types";
 
-const EventsSlider = ({ events }: { events: EventsType[] }) => {
+const EventsSlider = ({
+  events,
+  isMobile,
+}: {
+  events: EventsType[];
+  isMobile: boolean;
+}) => {
   return (
-    <div className="events-slider desktop-content">
+    <div className={isMobile ? "events-slider-mobile" : "events-slider desktop-content"}>
       <Swiper
         modules={[Navigation]}
-        slidesPerView={3}
+        slidesPerView={isMobile ? "auto" : 3}
         spaceBetween={24}
         navigation
         centeredSlides={false}
