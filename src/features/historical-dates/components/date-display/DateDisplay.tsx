@@ -6,8 +6,10 @@ import { CategoriesType } from "../../types";
 
 const DateDisplay = ({
   currentCategory,
+  isMobile,
 }: {
   currentCategory: CategoriesType;
+  isMobile: boolean;
 }) => {
   const first = parseInt(currentCategory.events[0]?.date.split("-")[0], 10);
   const last = parseInt(
@@ -46,8 +48,8 @@ const DateDisplay = ({
   }, [first, last, firstYear, lastYear]);
 
   return (
-    <div className="date-display">
-      <span className="first">{!!firstYear  && firstYear}</span>
+    <div className={isMobile ? "date-display-mobile" : "date-display"}>
+      <span className="first">{!!firstYear && firstYear}</span>
       <span className="last">{!!lastYear && lastYear}</span>
     </div>
   );

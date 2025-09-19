@@ -8,7 +8,7 @@ import { CategoriesType } from "./types";
 const HistoricalDates = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [categories, setCategories] = useState<CategoriesType[]>([]);
-  const isMobile = false;
+  const isMobile = true;
 
   const [selectedCategory, setSelectedCategory] = useState<number>(1);
 
@@ -41,7 +41,7 @@ const HistoricalDates = () => {
   return (
     <div className="historical-dates-container">
       {isMobile ? (
-        <MobileLayout {...layoutProps} />
+        <MobileLayout {...layoutProps}/>
       ) : (
         <DesktopLayout {...layoutProps} />
       )}
