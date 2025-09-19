@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  gap: 10;
+  justify-content: center;
+  padding: 5px;
+
+  .element {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #42567a;
+  }
+
+  .active {
+    opacity: 1;
+  }
+
+  .inactive {
+    opacity: 0.4;
+  }
+}
