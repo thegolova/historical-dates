@@ -24,7 +24,7 @@ const DesktopLayout = ({
 
   return (
     <div>
-      <b>DesktopLayout</b>
+      <h1>Исторические даты</h1>
       <CirclePicker list={categories} current={selectedCategory} onChange={setSelectedCategory} />
       <Stepper
         current={selectedCategory}
