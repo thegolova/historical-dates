@@ -4,11 +4,13 @@ import React, { useEffect, useState } from "react";
 import MobileLayout from "./components/mobile-layout/MobileLayout";
 import DesktopLayout from "./components/desktop-layout/DesktopLayout";
 import { CategoriesType } from "./types";
+import { useMobileHook } from "@/shared/hooks/useMobileHook";
 
 const HistoricalDates = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [categories, setCategories] = useState<CategoriesType[]>([]);
-  const isMobile = false;
+
+  const {isMobile} = useMobileHook();
 
   const [selectedCategory, setSelectedCategory] = useState<number>(1);
 

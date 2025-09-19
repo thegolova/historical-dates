@@ -9,7 +9,6 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: "PT Sans", sans-serif;
-  background-color: aqua;
 }
 
 body {
@@ -18,7 +17,7 @@ body {
 }
 
 .historical-dates-container {
-  min-height: 100vh;
+  // min-height: 100vh;
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -49,7 +48,6 @@ body {
     position: relative;
     width: 320px;
     padding: 60px 20px 20px 20px;
-    border: 1px solid black;
   }
 
   .mobile-title {
