@@ -25,7 +25,7 @@ const MobileLayout = ({
   return (
     <div className="mobile-container">
       <h1 className="mobile-title">Исторические даты</h1>
-      <DateDisplay currentCategory={currentCategory} isMobile />
+      <DateDisplay currentCategory={currentCategory} categoryType={currentCategory.type} isMobile />
       <EventsSlider events={currentCategory.events} isMobile />
       <div className="mobile-controls">
         <Stepper

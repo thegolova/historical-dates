@@ -35,7 +35,7 @@ const HistoricalDates = () => {
 
   if (loading)
     return (
-      <div className="historical-dates-container">
+      <div className="loading">
         <div> Loading...</div>
       </div>
     );
