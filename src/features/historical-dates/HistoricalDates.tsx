@@ -31,9 +31,15 @@ const HistoricalDates = () => {
     setSelectedCategory,
   };
 
+  if (loading)
+    return (
+      <div className="historical-dates-container">
+        <div> Loading...</div>
+      </div>
+    );
+
   return (
     <div className="historical-dates-container">
-      {loading && <div> Loading...</div>}
       {isMobile ? (
         <MobileLayout {...layoutProps} />
       ) : (

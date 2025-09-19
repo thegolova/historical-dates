@@ -17,13 +17,30 @@ const Stepper = ({
     setSelectedCategory(selectedCategory + 1);
   };
 
+  //TODO: вынести в утилы форматирование строки
+  const formattedSelectedCategory = selectedCategory
+    .toString()
+    .padStart(2, "0");
+
+  //TODO: вынести в утилы форматирование строки
+  const formattedTotalCategory = totalCategory.toString().padStart(2, "0");
+
+  const isDisabledSub = selectedCategory === 1;
+  const isDisabledAdd = selectedCategory === totalCategory;
+
   return (
-    <div className="stepper">
-      <div>
-        {selectedCategory} / {totalCategory}
+    <div className="stepper desktop-content">
+      <div className="stepper-container">
+        <div className="stepper-title">
+          {formattedSelectedCategory} / {formattedTotalCategory}
+        </div>
+        <button onClick={subStep} disabled={isDisabledSub}>
+          &#60;
+        </button>
+        <button onClick={addStep} disabled={isDisabledAdd}>
+          &gt;
+        </button>
       </div>
-      <button onClick={subStep}>&#60;</button>
-      <button onClick={addStep}>&gt;</button>
     </div>
   );
 };

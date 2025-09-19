@@ -5,6 +5,7 @@ import EventsSlider from "../events-slider/EventsSlider";
 import Stepper from "../stepper/Stepper";
 import CirclePicker from "../circle-picker/CirclePicker";
 import { CategoriesType } from "../../types";
+import DateDisplay from "../date-display/DateDisplay";
 
 const DesktopLayout = ({
   categories,
@@ -30,12 +31,13 @@ const DesktopLayout = ({
   });
 
   return (
-    <div>
+    <div className="desktop-container">
       <h1>Исторические даты</h1>
+      <DateDisplay currentCategory={currentCategory}/>
       <CirclePicker
-        list={categories}
-        current={selectedCategory}
-        onChange={setSelectedCategory}
+        categories={categories}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
       />
       <Stepper
         selectedCategory={selectedCategory}

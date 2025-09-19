@@ -2,27 +2,27 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { CategoriesType } from "../../types";
 
-type List = { id: number; type: string };
 
-export default function PickerWheel({
-  list,
-  current,
-  onChange,
+const CirclePicker = ({
+  categories,
+  selectedCategory,
+  setSelectedCategory,
 }: {
-  list: List[];
-  current: number;
-  onChange: (n: number) => void;
-}) {
+  categories: CategoriesType[];
+  selectedCategory: number;
+  setSelectedCategory: (index: number) => void;
+}) => {
   const size = 340;
   const center = size / 2;
   const radius = 130;
-  const anglePerItem = 360 / list.length;
+  const anglePerItem = 360 / categories.length;
 
   // позиция выбранного типа даты
   const desiredAngleDeg = -60;
 
-  const initialRotation = desiredAngleDeg - anglePerItem * current;
+  const initialRotation = desiredAngleDeg - anglePerItem * selectedCategory;
 
   const rotationRef = useRef({ val: initialRotation });
   const [rotation, setRotation] = useState<number>(
@@ -32,7 +32,7 @@ export default function PickerWheel({
   const labelRef = useRef<SVGTextElement | null>(null);
 
   useEffect(() => {
-    const target = desiredAngleDeg - anglePerItem * current;
+    const target = desiredAngleDeg - anglePerItem * selectedCategory;
 
     gsap.killTweensOf(rotationRef.current);
     gsap.to(rotationRef.current, {
@@ -51,7 +51,7 @@ export default function PickerWheel({
         { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }
       );
     }
-  }, [current, anglePerItem]);
+  }, [selectedCategory, anglePerItem]);
 
   return (
     <div
@@ -78,9 +78,9 @@ export default function PickerWheel({
           fill="none"
         />
 
-        {list.map((cat, i) => {
+        {categories.map((cat, i) => {
           const index = i + 1;
-          const baseDeg = (360 / list.length) * index;
+          const baseDeg = (360 / categories.length) * index;
           const angleDeg = baseDeg + rotation;
           const angleRad = (angleDeg * Math.PI) / 180;
 
@@ -90,13 +90,13 @@ export default function PickerWheel({
           const xStr = Number(x.toFixed(3));
           const yStr = Number(y.toFixed(3));
 
-          const isSelected = index === current;
+          const isSelected = index === selectedCategory;
 
           return (
             <g
               key={cat.id}
               transform={`translate(${xStr},${yStr})`}
-              onClick={() => onChange(index)}
+              onClick={() => setSelectedCategory(index)}
               style={{ cursor: "pointer" }}
             >
               {isSelected ? (
@@ -134,3 +134,5 @@ export default function PickerWheel({
     </div>
   );
 }
+
+export default CirclePicker;

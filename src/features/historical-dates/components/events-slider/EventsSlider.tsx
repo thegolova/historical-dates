@@ -7,7 +7,7 @@ import { EventsType } from "../../types";
 
 const EventsSlider = ({ events }: { events: EventsType[] }) => {
   return (
-    <div className="events-slider">
+    <div className="events-slider desktop-content">
       <Swiper
         modules={[Navigation]}
         slidesPerView={3}
@@ -22,8 +22,8 @@ const EventsSlider = ({ events }: { events: EventsType[] }) => {
           return (
             <SwiperSlide key={event.id}>
               <div className="slide-card">
-                <div className="year">{year}</div>
-                <div className="desc">{event.description}</div>
+                <div className="slide-year">{year}</div>
+                <div className="slide-desc">{event.description}</div>
               </div>
             </SwiperSlide>
           );
