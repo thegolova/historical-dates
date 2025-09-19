@@ -32,7 +32,7 @@ const DesktopLayout = ({
 
   return (
     <div className="desktop-container">
-      <h1>Исторические даты</h1>
+      <h1 className="desktop-title">Исторические даты</h1>
       <DateDisplay currentCategory={currentCategory}/>
       <CirclePicker
         categories={categories}
