@@ -12,7 +12,7 @@ const CirclePicker = ({
   selectedCategory: number;
   setSelectedCategory: (index: number) => void;
 }) => {
-  const size = 530;
+  const size = 535;
   const center = size / 2;
   const radius = 260;
   const anglePerItem = 360 / categories.length;

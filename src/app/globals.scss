@@ -12,8 +12,7 @@ body {
 }
 
 body {
-  color: black;
-  background: white;
+  background: #f4f5f9;
 }
 
 .loading {
@@ -24,14 +23,39 @@ body {
 }
 
 .historical-dates-container {
-  padding: 20px;
+  margin-left: 160px;
   display: flex;
   justify-content: center;
 
+  @media (max-width: 1024px) {
+    margin: 0 20px;
+  }
+
   .desktop-container {
     position: relative;
-    width: 1440px;
-    padding-top: 170px;
+    width: 100%;
+    max-width: 1440px;
+    border: 1px solid rgb(66, 86, 122, 0.2);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgb(66, 86, 122, 0.2);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1px;
+      height: 100%;
+      background-color: rgb(66, 86, 122, 0.2);
+    }
   }
 
   .desktop-title {
@@ -44,6 +68,8 @@ body {
     border-left: 5px solid transparent;
     border-image: linear-gradient(to bottom, #3877ee, #ef5da8) 1;
     border-image-slice: 1;
+    margin-top: 90px;
+    color: #42567a;
   }
 
   .desktop-content {
@@ -90,20 +116,6 @@ body {
       display: flex;
       gap: 20;
     }
-
-    button {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: 1px solid #45567a;
-      background: none;
-      cursor: pointer;
-      font-size: 20px;
-
-      &:disabled {
-        opacity: 0.5;
-      }
-    }
   }
 
   .stepper-mobile {
@@ -123,20 +135,6 @@ body {
     .buttons {
       display: flex;
       gap: 10;
-    }
-
-    button {
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      border: 1px solid #45567a;
-      background: none;
-      cursor: pointer;
-      font-size: 10px;
-
-      &:disabled {
-        opacity: 0.5;
-      }
     }
   }
 
@@ -279,18 +277,18 @@ body {
     gap: 60px;
     display: flex;
     justify-content: center;
-    padding: 96px 0 137px 0;
+    padding: 130px 0 137px 0;
     line-height: 160px;
 
     .first {
       color: #5d5fef;
-      -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: black;
     }
     .last {
       color: #ef5da8;
-      -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: black;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 160px;
     }
   }
 
@@ -326,11 +324,9 @@ body {
   }
 
   .circle-picker-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
     position: absolute;
-    width: 100%;
-    top: 225;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }

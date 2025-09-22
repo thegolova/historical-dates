@@ -1,3 +1,4 @@
+import ArrowButton from "@/shared/components/UI/arrow-button/ArrowButton";
 import React from "react";
 
 const Stepper = ({
@@ -37,12 +38,16 @@ const Stepper = ({
           {formattedSelectedCategory}/{formattedTotalCategory}
         </div>
         <div className="buttons">
-          <button onClick={subStep} disabled={isDisabledSub}>
-            &#60;
-          </button>
-          <button onClick={addStep} disabled={isDisabledAdd}>
-            &gt;
-          </button>
+          <ArrowButton
+            position="left"
+            onClick={subStep}
+            disabled={isDisabledSub}
+          />
+          <ArrowButton
+            position="right"
+            onClick={addStep}
+            disabled={isDisabledAdd}
+          />
         </div>
       </div>
     </div>
