@@ -15,14 +15,13 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({
   disabled = false,
 }) => {
   return (
-    <button
+    <div
       onClick={onClick}
       className={`
         ${styles.button} 
         ${styles[position]} 
         ${disabled ? styles.disabled : ""}
         ${className || ""}`}
-      disabled={disabled}
     >
       <svg
         width="50"
@@ -46,7 +45,7 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({
           strokeWidth="2"
         />
       </svg>
-    </button>
+    </div>
   );
 };
 

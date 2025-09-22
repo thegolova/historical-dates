@@ -146,6 +146,7 @@ body {
 
     .slide-card {
       height: 100%;
+      padding-left: 10px;
     }
 
     .slide-year {
@@ -195,6 +196,15 @@ body {
 
     .swiper-button-disabled {
       display: none !important;
+    }
+
+    .custom-prev-button,
+    .custom-next-button {
+      background: none;
+      border: none;
+      padding: 0;
+      width: auto;
+      height: auto;
     }
   }
 
