@@ -1,3 +1,4 @@
+import ArrowButton from "@/shared/components/UI/arrow-button/ArrowButton";
 import React from "react";
 
 const Stepper = ({
@@ -31,18 +32,24 @@ const Stepper = ({
   const isDisabledAdd = selectedCategory === totalCategory;
 
   return (
-    <div className={isMobile ? "stepper-mobile" : "stepper desktop-content"}>
+    <div className={`stepper desktop-content ${isMobile && "stepper-mobile"}`}>
       <div className="stepper-container">
         <div className="title">
           {formattedSelectedCategory}/{formattedTotalCategory}
         </div>
         <div className="buttons">
-          <button onClick={subStep} disabled={isDisabledSub}>
-            &#60;
-          </button>
-          <button onClick={addStep} disabled={isDisabledAdd}>
-            &gt;
-          </button>
+          <ArrowButton
+            position="left"
+            onClick={subStep}
+            disabled={isDisabledSub}
+            isMobile={isMobile}
+          />
+          <ArrowButton
+            position="right"
+            onClick={addStep}
+            disabled={isDisabledAdd}
+            isMobile={isMobile}
+          />
         </div>
       </div>
     </div>

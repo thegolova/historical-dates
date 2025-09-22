@@ -4,6 +4,8 @@
   margin: 0;
 }
 
+//TODO: рефакторинг стилей, избавиться от дубликатов, минимизировать
+
 html,
 body {
   max-width: 100vw;
@@ -12,8 +14,7 @@ body {
 }
 
 body {
-  color: black;
-  background: white;
+  background: #f4f5f9;
 }
 
 .loading {
@@ -24,14 +25,39 @@ body {
 }
 
 .historical-dates-container {
-  padding: 20px;
+  margin-left: 160px;
   display: flex;
   justify-content: center;
 
+  @media (max-width: 1024px) {
+    margin: 0 20px;
+  }
+
   .desktop-container {
     position: relative;
-    width: 1440px;
-    padding-top: 170px;
+    width: 100%;
+    max-width: 1440px;
+    border: 1px solid rgb(66, 86, 122, 0.2);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgb(66, 86, 122, 0.2);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1px;
+      height: 100%;
+      background-color: rgb(66, 86, 122, 0.2);
+    }
   }
 
   .desktop-title {
@@ -44,6 +70,8 @@ body {
     border-left: 5px solid transparent;
     border-image: linear-gradient(to bottom, #3877ee, #ef5da8) 1;
     border-image-slice: 1;
+    margin-top: 90px;
+    color: #42567a;
   }
 
   .desktop-content {
@@ -90,53 +118,20 @@ body {
       display: flex;
       gap: 20;
     }
-
-    button {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: 1px solid #45567a;
-      background: none;
-      cursor: pointer;
-      font-size: 20px;
-
-      &:disabled {
-        opacity: 0.5;
-      }
-    }
   }
 
   .stepper-mobile {
+    margin: 0;
     position: absolute;
     bottom: 0;
     left: 0;
 
     .title {
-      font-family: "PT Sans", sans-serif;
-      font-style: normal;
-      font-size: 14px;
-      color: #45567a;
-      margin-bottom: 14px;
       line-height: 0%;
     }
 
     .buttons {
-      display: flex;
       gap: 10;
-    }
-
-    button {
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      border: 1px solid #45567a;
-      background: none;
-      cursor: pointer;
-      font-size: 10px;
-
-      &:disabled {
-        opacity: 0.5;
-      }
     }
   }
 
@@ -148,6 +143,7 @@ body {
 
     .slide-card {
       height: 100%;
+      padding-left: 10px;
     }
 
     .slide-year {
@@ -198,68 +194,39 @@ body {
     .swiper-button-disabled {
       display: none !important;
     }
+
+    .custom-prev-button,
+    .custom-next-button {
+      background: none;
+      border: none;
+      padding: 0;
+      width: auto;
+      height: auto;
+    }
   }
 
   .events-slider-mobile {
-    position: relative;
-    display: flex;
     height: 115px;
-    margin-top: 20px;
-    margin-bottom: 78px;
+    margin: 20px 0 78px 0;
 
     .slide-card {
       height: 100%;
+      padding-left: 0;
     }
 
     .slide-year {
-      color: #3877ee;
       font-size: 16px;
       margin-bottom: 15px;
-      font-family: "Bebas Neue", sans-serif;
-      font-style: normal;
     }
 
     .slide-desc {
-      color: #42567a;
       font-size: 14px;
-      font-family: "PT Sans", sans-serif;
-      font-style: normal;
     }
-
     .custom-prev,
     .custom-next {
-      position: absolute;
-      top: 40%;
-      z-index: 10;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #fff;
-      border: 1px solid #ccc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-weight: 700;
-      user-select: none;
-
-      &:hover {
-        background: #f5f5f5;
-      }
+      width: 25px;
+      height: 25px;
     }
-
-    .custom-prev {
-      left: 0;
-    }
-
-    .custom-next {
-      right: 0;
-    }
-
-    .swiper-button-disabled {
-      display: none !important;
-    }
-
     .swiper-slide {
       width: 80%;
       transition: opacity 0.3s ease;
@@ -270,6 +237,7 @@ body {
     }
   }
 
+  //TODO: рефакторинг, переделать позицию так же, как линии на макете.
   .date-display {
     display: flex;
     font-size: 200px;
@@ -279,18 +247,19 @@ body {
     gap: 60px;
     display: flex;
     justify-content: center;
-    padding: 96px 0 137px 0;
+    min-height: 420px;
+    padding-top: 160px;
     line-height: 160px;
 
     .first {
       color: #5d5fef;
-      -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: black;
     }
     .last {
       color: #ef5da8;
-      -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: black;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 160px;
     }
   }
 
@@ -303,7 +272,8 @@ body {
     font-weight: bold;
     display: flex;
     justify-content: space-between;
-    padding: 56px 0;
+    min-height: 230px;
+    padding-top: 60px;
     border-bottom: 1px solid #c7cdd9;
 
     .title {
@@ -326,11 +296,9 @@ body {
   }
 
   .circle-picker-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
     position: absolute;
-    width: 100%;
-    top: 225;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
