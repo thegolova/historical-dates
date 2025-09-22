@@ -32,7 +32,7 @@ const Stepper = ({
   const isDisabledAdd = selectedCategory === totalCategory;
 
   return (
-    <div className={isMobile ? "stepper-mobile" : "stepper desktop-content"}>
+    <div className={`stepper desktop-content ${isMobile && "stepper-mobile"}`}>
       <div className="stepper-container">
         <div className="title">
           {formattedSelectedCategory}/{formattedTotalCategory}
@@ -42,11 +42,13 @@ const Stepper = ({
             position="left"
             onClick={subStep}
             disabled={isDisabledSub}
+            isMobile={isMobile}
           />
           <ArrowButton
             position="right"
             onClick={addStep}
             disabled={isDisabledAdd}
+            isMobile={isMobile}
           />
         </div>
       </div>

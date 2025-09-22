@@ -6,6 +6,7 @@ type ArrowButtonProps = {
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
+  isMobile?: boolean;
 };
 
 const ArrowButton: React.FC<ArrowButtonProps> = ({
@@ -13,7 +14,10 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({
   onClick,
   className,
   disabled = false,
+  isMobile = false,
 }) => {
+  const sizeButton = isMobile ? "25" : "50";
+
   return (
     <div
       onClick={onClick}
@@ -24,8 +28,8 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({
         ${className || ""}`}
     >
       <svg
-        width="50"
-        height="50"
+        width={sizeButton}
+        height={sizeButton}
         viewBox="0 0 50 50"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

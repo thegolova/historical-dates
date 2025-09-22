@@ -24,15 +24,17 @@ const EventsSlider = ({
 
   return (
     <div
-      className={
-        isMobile ? "events-slider-mobile" : "events-slider desktop-content"
-      }
+      className={`events-slider desktop-content ${
+        isMobile && "events-slider-mobile"
+      }`}
     >
       {swiperReady && (
         <>
-          <button ref={prevRef} className="custom-prev-button">
-            <ArrowButton position="left" />
-          </button>
+          {!isMobile && (
+            <button ref={prevRef} className="custom-prev-button">
+              <ArrowButton position="left" />
+            </button>
+          )}
           <Swiper
             modules={[Navigation]}
             slidesPerView={isMobile ? "auto" : 3}
@@ -64,9 +66,11 @@ const EventsSlider = ({
               );
             })}
           </Swiper>
-          <button ref={nextRef} className="custom-next-button">
-            <ArrowButton position="right" />
-          </button>
+          {!isMobile && (
+            <button ref={nextRef} className="custom-next-button">
+              <ArrowButton position="right" />
+            </button>
+          )}
         </>
       )}
     </div>
