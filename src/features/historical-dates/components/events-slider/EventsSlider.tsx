@@ -47,9 +47,9 @@ const EventsSlider = ({
               nextEl: nextRef.current,
             }}
             onBeforeInit={(swiper) => {
-              // @ts-expect-error
+              // @ts-expect-error: реф для слайдера
               swiper.params.navigation.prevEl = prevRef.current;
-              // @ts-expect-error
+              // @ts-expect-error: реф для слайдера
               swiper.params.navigation.nextEl = nextRef.current;
             }}
             {...(!isMobile && { navigation: true })}
