@@ -47,8 +47,10 @@ const EventsSlider = ({
               nextEl: nextRef.current,
             }}
             onBeforeInit={(swiper) => {
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-expect-error: реф для слайдера
               swiper.params.navigation.prevEl = prevRef.current;
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-expect-error: реф для слайдера
               swiper.params.navigation.nextEl = nextRef.current;
             }}
